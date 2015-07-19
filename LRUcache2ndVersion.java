@@ -41,9 +41,8 @@ public class LRUCache {
         hash.put(key, node);
         if(count > capacity) {
             Node cut = tail.prev;
+            deleteFromCurr(cut);
             hash.remove(cut.key);
-            tail.prev = tail.prev.prev;
-            tail.prev.next = tail;
             count--;
         }
         insertToHead(node);
